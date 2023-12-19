@@ -26,10 +26,10 @@ class FileStorage:
         if cls:
             __dict = self.__objects
             for key in __dict:
-              piece = key.replace('.', ' ')
-              piece = shlex.split(piece)
-              if (piece[0] == cls.__name__):
-                  _dict[key] = self.__objects[key]
+                section = key.replace('.', ' ')
+                section = shlex.split(section)
+                if (section[0] == cls.__name__):
+                    _dict[key] = self.__objects[key]
             return (_dict)
         else:
             return self.__objects
@@ -64,7 +64,9 @@ class FileStorage:
             pass
 
     def delete(self, obj=None):
-        """ deletes existing obj """
+        """
+        Deletes an object
+        """
         if obj:
             key = "{}.{}".format(type(obj).__name__, obj.id)
             del self.__objects[key]
